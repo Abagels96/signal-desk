@@ -32,7 +32,7 @@ function trendBadge(trend: string) {
     return "text-emerald-400/90 border-emerald-400/25 bg-emerald-500/10";
   if (trend === "down")
     return "text-rose-400/90 border-rose-400/25 bg-rose-500/10";
-  return "text-zinc-500 border-white/[0.08] bg-white/[0.04]";
+  return "text-zinc-500 border-white/[0.08] bg-white/[0.04] light:text-zinc-700 light:border-zinc-300/80 light:bg-zinc-100/90";
 }
 
 export function InsightsWorkspace() {
@@ -60,58 +60,58 @@ export function InsightsWorkspace() {
   const statusTotal = Object.values(draftStatus).reduce((a, b) => a + b, 0);
 
   return (
-    <div className="flex flex-col gap-14 lg:gap-16">
+    <div className="flex min-w-0 flex-col gap-14 lg:gap-16">
       <header className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
         <div>
-          <p className="text-[11px] font-medium uppercase tracking-[0.28em] text-zinc-500">
+          <p className="text-[11px] font-medium uppercase tracking-[0.28em] text-zinc-500 light:text-zinc-600">
             Insights
           </p>
-          <h1 className="mt-4 font-[family-name:var(--font-display)] text-3xl font-normal tracking-tight text-zinc-50 sm:text-4xl lg:text-[2.35rem]">
+          <h1 className="mt-4 max-w-[min(100%,40rem)] font-[family-name:var(--font-display)] text-[clamp(1.5rem,4.5vw,2.35rem)] font-normal leading-tight tracking-tight text-zinc-50 light:text-zinc-900 sm:text-4xl lg:text-[2.35rem]">
             How the desk has been running — from your device only.
           </h1>
-          <p className="mt-4 max-w-xl text-sm leading-relaxed text-zinc-500">
+          <p className="mt-4 max-w-xl text-sm leading-relaxed text-zinc-500 light:text-zinc-600">
             Numbers below are derived from saved sessions and drafts in{" "}
-            <span className="text-zinc-400">localStorage</span>. Story-first layout,
-            not a generic analytics grid.
+            <span className="text-zinc-400 light:text-zinc-600">localStorage</span>.
+            Story-first layout, not a generic analytics grid.
           </p>
         </div>
-        <div className="rounded-3xl border border-white/[0.07] bg-[linear-gradient(145deg,rgba(20,24,34,0.75)_0%,rgba(10,12,18,0.92)_100%)] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] lg:translate-y-1">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-zinc-500">
+        <div className="rounded-3xl border border-white/[0.07] bg-[linear-gradient(145deg,rgba(20,24,34,0.75)_0%,rgba(10,12,18,0.92)_100%)] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] lg:translate-y-1 light:border-zinc-200/80 light:bg-[linear-gradient(145deg,rgba(255,255,255,0.96)_0%,rgba(244,244,245,0.98)_100%)] light:shadow-[inset_0_1px_0_rgba(0,0,0,0.04)]">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-zinc-500 light:text-zinc-600">
             At a glance
           </p>
           <dl className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-2">
             <div>
-              <dt className="text-[10px] uppercase tracking-wider text-zinc-600">
+              <dt className="text-[10px] uppercase tracking-wider text-zinc-600 light:text-zinc-500">
                 Sessions
               </dt>
-              <dd className="mt-1 font-[family-name:var(--font-display)] text-2xl text-zinc-100">
+              <dd className="mt-1 font-[family-name:var(--font-display)] text-2xl text-zinc-100 light:text-zinc-900">
                 {rollup.totalSessions}
               </dd>
             </div>
             <div>
-              <dt className="text-[10px] uppercase tracking-wider text-zinc-600">
+              <dt className="text-[10px] uppercase tracking-wider text-zinc-600 light:text-zinc-500">
                 Deep time
               </dt>
-              <dd className="mt-1 font-[family-name:var(--font-display)] text-2xl text-zinc-100">
+              <dd className="mt-1 font-[family-name:var(--font-display)] text-2xl text-zinc-100 light:text-zinc-900">
                 {rollup.totalDeepMinutes}
-                <span className="ml-1 text-sm font-sans font-normal text-zinc-500">
+                <span className="ml-1 text-sm font-sans font-normal text-zinc-500 light:text-zinc-600">
                   min
                 </span>
               </dd>
             </div>
             <div>
-              <dt className="text-[10px] uppercase tracking-wider text-zinc-600">
+              <dt className="text-[10px] uppercase tracking-wider text-zinc-600 light:text-zinc-500">
                 Drafts
               </dt>
-              <dd className="mt-1 font-[family-name:var(--font-display)] text-2xl text-zinc-100">
+              <dd className="mt-1 font-[family-name:var(--font-display)] text-2xl text-zinc-100 light:text-zinc-900">
                 {draftTotals.total}
               </dd>
             </div>
             <div>
-              <dt className="text-[10px] uppercase tracking-wider text-zinc-600">
+              <dt className="text-[10px] uppercase tracking-wider text-zinc-600 light:text-zinc-500">
                 Words logged
               </dt>
-              <dd className="mt-1 font-[family-name:var(--font-display)] text-2xl text-zinc-100">
+              <dd className="mt-1 font-[family-name:var(--font-display)] text-2xl text-zinc-100 light:text-zinc-900">
                 {draftTotals.totalWords.toLocaleString()}
               </dd>
             </div>
@@ -123,20 +123,20 @@ export function InsightsWorkspace() {
       <section className="relative">
         <div className="mb-4 flex flex-wrap items-end justify-between gap-4">
           <div>
-            <p className="text-[11px] font-medium uppercase tracking-[0.24em] text-zinc-500">
+            <p className="text-[11px] font-medium uppercase tracking-[0.24em] text-zinc-500 light:text-zinc-600">
               Template signal
             </p>
-            <h2 className="mt-2 font-[family-name:var(--font-display)] text-2xl font-normal text-zinc-100">
+            <h2 className="mt-2 font-[family-name:var(--font-display)] text-2xl font-normal text-zinc-100 light:text-zinc-900">
               Most-used lanes (sessions + drafts)
             </h2>
           </div>
-          <p className="max-w-sm text-xs text-zinc-600">
+          <p className="max-w-sm text-xs text-zinc-600 light:text-zinc-600">
             Sessions weighted 2× vs. drafts to reflect “time in lane.” Unlinked
             work doesn’t appear here.
           </p>
         </div>
         {templateUsage.length === 0 ? (
-          <p className="rounded-3xl border border-dashed border-white/[0.1] bg-white/[0.02] px-5 py-10 text-center text-sm text-zinc-500">
+          <p className="rounded-3xl border border-dashed border-white/[0.1] bg-white/[0.02] px-5 py-10 text-center text-sm text-zinc-500 light:border-zinc-300/70 light:bg-zinc-50/80 light:text-zinc-600">
             No template usage yet — run Generate with a lane or save drafts tied to
             templates.
           </p>
@@ -147,7 +147,9 @@ export function InsightsWorkspace() {
                 key={row.templateId}
                 className={cn(
                   "relative overflow-hidden rounded-3xl border border-white/[0.07] bg-[#0a0b10]/80 p-5 sm:p-6",
-                  i === 0 && "border-cyan-400/15 shadow-[0_0_40px_-12px_rgba(56,200,255,0.12)]",
+                  "light:border-zinc-200/80 light:bg-white/90",
+                  i === 0 &&
+                    "border-cyan-400/15 shadow-[0_0_40px_-12px_rgba(56,200,255,0.12)] light:border-cyan-500/25 light:shadow-[0_0_32px_-12px_rgba(56,189,248,0.18)]",
                 )}
               >
                 <div
@@ -165,17 +167,21 @@ export function InsightsWorkspace() {
                         {row.templateId}
                       </span>
                     </div>
-                    <p className="mt-2 font-[family-name:var(--font-display)] text-lg font-semibold text-zinc-100">
+                    <p className="mt-2 font-[family-name:var(--font-display)] text-lg font-semibold text-zinc-100 light:text-zinc-900">
                       {row.title}
                     </p>
                   </div>
-                  <div className="flex shrink-0 gap-6 text-sm tabular-nums text-zinc-400">
+                  <div className="flex shrink-0 gap-6 text-sm tabular-nums text-zinc-400 light:text-zinc-700">
                     <span>
-                      <span className="text-zinc-600">Sessions </span>
+                      <span className="text-zinc-600 light:text-zinc-500">
+                        Sessions{" "}
+                      </span>
                       {row.sessionCount}
                     </span>
                     <span>
-                      <span className="text-zinc-600">Drafts </span>
+                      <span className="text-zinc-600 light:text-zinc-500">
+                        Drafts{" "}
+                      </span>
                       {row.draftCount}
                     </span>
                   </div>
@@ -189,18 +195,18 @@ export function InsightsWorkspace() {
       <div className="grid gap-10 lg:grid-cols-12 lg:gap-8">
         {/* Draft activity */}
         <section className="lg:col-span-5">
-          <p className="text-[11px] font-medium uppercase tracking-[0.24em] text-zinc-500">
+          <p className="text-[11px] font-medium uppercase tracking-[0.24em] text-zinc-500 light:text-zinc-600">
             Draft activity
           </p>
-          <h2 className="mt-2 font-[family-name:var(--font-display)] text-2xl font-normal text-zinc-100">
+          <h2 className="mt-2 font-[family-name:var(--font-display)] text-2xl font-normal text-zinc-100 light:text-zinc-900">
             Status runway
           </h2>
-          <p className="mt-2 text-sm text-zinc-500">
+          <p className="mt-2 text-sm text-zinc-500 light:text-zinc-600">
             A single strip of where your work sits — not a donut chart.
           </p>
           <div className="mt-6 grid gap-4">
             {statusTotal === 0 ? (
-              <p className="rounded-2xl border border-dashed border-white/[0.08] bg-black/20 px-4 py-6 text-center text-sm text-zinc-600">
+              <p className="rounded-2xl border border-dashed border-white/[0.08] bg-black/20 px-4 py-6 text-center text-sm text-zinc-600 light:border-zinc-300/70 light:bg-zinc-100/80 light:text-zinc-700">
                 No drafts in local shelf yet.
               </p>
             ) : (
@@ -232,14 +238,16 @@ export function InsightsWorkspace() {
                   key={st}
                   className="flex items-center justify-between gap-4 text-sm"
                 >
-                  <span className="text-zinc-400">{STATUS_LABEL[st]}</span>
-                  <span className="tabular-nums text-zinc-200">
+                  <span className="text-zinc-400 light:text-zinc-600">
+                    {STATUS_LABEL[st]}
+                  </span>
+                  <span className="tabular-nums text-zinc-200 light:text-zinc-900">
                     {draftStatus[st]}
                   </span>
                 </li>
               ))}
             </ul>
-            <p className="border-t border-white/[0.06] pt-4 text-xs text-zinc-600">
+            <p className="border-t border-white/[0.06] pt-4 text-xs text-zinc-600 light:border-zinc-200/80 light:text-zinc-600">
               {draftTotals.pinned} pinned ·{" "}
               {draftTotals.totalWords.toLocaleString()} words across drafts.
             </p>
@@ -248,32 +256,32 @@ export function InsightsWorkspace() {
 
         {/* Session history summary */}
         <section className="lg:col-span-7">
-          <p className="text-[11px] font-medium uppercase tracking-[0.24em] text-zinc-500">
+          <p className="text-[11px] font-medium uppercase tracking-[0.24em] text-zinc-500 light:text-zinc-600">
             Session history
           </p>
-          <h2 className="mt-2 font-[family-name:var(--font-display)] text-2xl font-normal text-zinc-100">
+          <h2 className="mt-2 font-[family-name:var(--font-display)] text-2xl font-normal text-zinc-100 light:text-zinc-900">
             Where time pooled
           </h2>
-          <p className="mt-2 text-sm text-zinc-500">
+          <p className="mt-2 text-sm text-zinc-500 light:text-zinc-600">
             Deep minutes by lane — proportional bars, no charting library.
           </p>
           <div className="mt-6 space-y-4">
-            <div className="flex flex-wrap gap-4 text-xs text-zinc-600">
+            <div className="flex flex-wrap gap-4 text-xs text-zinc-600 light:text-zinc-600">
               <span>
                 Completed:{" "}
-                <span className="font-medium text-zinc-300">
+                <span className="font-medium text-zinc-300 light:text-zinc-900">
                   {rollup.completedSessions}
                 </span>
               </span>
               <span>
                 Interrupted / paused:{" "}
-                <span className="font-medium text-zinc-300">
+                <span className="font-medium text-zinc-300 light:text-zinc-900">
                   {rollup.interruptedOrPaused}
                 </span>
               </span>
               <span>
                 Outputs logged:{" "}
-                <span className="font-medium text-zinc-300">
+                <span className="font-medium text-zinc-300 light:text-zinc-900">
                   {rollup.totalOutputs}
                 </span>
               </span>
@@ -282,12 +290,14 @@ export function InsightsWorkspace() {
               {rollup.byLane.map((row, i) => (
                 <li key={row.lane}>
                   <div className="mb-1.5 flex items-center justify-between gap-2 text-sm">
-                    <span className="font-medium text-zinc-300">{row.lane}</span>
-                    <span className="tabular-nums text-zinc-500">
+                    <span className="font-medium text-zinc-300 light:text-zinc-800">
+                      {row.lane}
+                    </span>
+                    <span className="tabular-nums text-zinc-500 light:text-zinc-600">
                       {row.minutes} min · {row.sessions} sessions
                     </span>
                   </div>
-                  <div className="h-2 overflow-hidden rounded-full bg-white/[0.06]">
+                  <div className="h-2 overflow-hidden rounded-full bg-white/[0.06] light:bg-zinc-200/80">
                     <div
                       className={cn(
                         "h-full rounded-full bg-[linear-gradient(90deg,rgba(56,200,255,0.55),rgba(167,139,250,0.45))]",
@@ -305,7 +315,9 @@ export function InsightsWorkspace() {
               ))}
             </ul>
             {sessions.length === 0 ? (
-              <p className="text-sm text-zinc-600">No sessions in local history.</p>
+              <p className="text-sm text-zinc-600 light:text-zinc-600">
+                No sessions in local history.
+              </p>
             ) : null}
           </div>
         </section>
@@ -314,13 +326,13 @@ export function InsightsWorkspace() {
       {/* Smart insight cards */}
       <section>
         <div className="mb-6">
-          <p className="text-[11px] font-medium uppercase tracking-[0.24em] text-zinc-500">
+          <p className="text-[11px] font-medium uppercase tracking-[0.24em] text-zinc-500 light:text-zinc-600">
             Narrative signals
           </p>
-          <h2 className="mt-2 font-[family-name:var(--font-display)] text-2xl font-normal text-zinc-100">
+          <h2 className="mt-2 font-[family-name:var(--font-display)] text-2xl font-normal text-zinc-100 light:text-zinc-900">
             Smart insight cards
           </h2>
-          <p className="mt-2 text-sm text-zinc-500">
+          <p className="mt-2 text-sm text-zinc-500 light:text-zinc-600">
             Qualitative copy from mock catalog — pairs with your local metrics above.
           </p>
         </div>
@@ -330,6 +342,7 @@ export function InsightsWorkspace() {
               key={ins.id}
               className={cn(
                 "relative overflow-hidden rounded-3xl border border-white/[0.07] bg-[linear-gradient(155deg,rgba(18,22,32,0.92)_0%,rgba(10,12,18,0.97)_100%)] p-6 sm:p-8 lg:p-10",
+                "light:border-zinc-200/80 light:bg-[linear-gradient(155deg,rgba(255,255,255,0.97)_0%,rgba(244,244,245,0.99)_100%)]",
                 i % 2 === 1 && "lg:ml-8 lg:max-w-[92%]",
                 i % 2 === 0 && "lg:mr-8 lg:max-w-[92%]",
               )}
@@ -348,18 +361,22 @@ export function InsightsWorkspace() {
                 >
                   {ins.trend}
                 </span>
-                <span className="text-xs text-zinc-600">{ins.period}</span>
+                <span className="text-xs text-zinc-600 light:text-zinc-500">
+                  {ins.period}
+                </span>
               </div>
-              <h3 className="mt-5 font-[family-name:var(--font-display)] text-xl font-normal leading-snug text-zinc-100 sm:text-2xl">
+              <h3 className="mt-5 font-[family-name:var(--font-display)] text-xl font-normal leading-snug text-zinc-100 sm:text-2xl light:text-zinc-900">
                 {ins.title}
               </h3>
-              <p className="mt-4 max-w-3xl text-sm leading-relaxed text-zinc-400">
+              <p className="mt-4 max-w-3xl text-sm leading-relaxed text-zinc-400 light:text-zinc-700">
                 {ins.summary}
               </p>
               {ins.metricValue ? (
-                <p className="mt-6 border-t border-white/[0.06] pt-5 text-sm text-zinc-400">
-                  <span className="text-zinc-600">{ins.metricLabel}: </span>
-                  <span className="font-semibold text-zinc-200">
+                <p className="mt-6 border-t border-white/[0.06] pt-5 text-sm text-zinc-400 light:border-zinc-200/80 light:text-zinc-700">
+                  <span className="text-zinc-600 light:text-zinc-500">
+                    {ins.metricLabel}:{" "}
+                  </span>
+                  <span className="font-semibold text-zinc-200 light:text-zinc-900">
                     {ins.metricValue}
                   </span>
                 </p>

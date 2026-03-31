@@ -26,15 +26,17 @@ export function SectionHeader({
     >
       <div className="max-w-2xl lg:pl-1">
         {eyebrow ? (
-          <p className="text-[11px] font-medium uppercase tracking-[0.28em] text-zinc-500">
+          <p className="text-[11px] font-medium uppercase tracking-[0.28em] text-zinc-500 light:text-zinc-600">
             {eyebrow}
           </p>
         ) : null}
-        <h2 className="mt-2 font-[family-name:var(--font-display)] text-2xl font-normal tracking-tight text-zinc-50 sm:text-3xl">
+        <h2 className="mt-2 font-[family-name:var(--font-display)] text-2xl font-normal tracking-tight text-zinc-50 sm:text-3xl light:text-zinc-900">
           {title}
         </h2>
         {description ? (
-          <p className="mt-3 text-sm leading-relaxed text-zinc-500">{description}</p>
+          <p className="mt-3 text-sm leading-relaxed text-zinc-500 light:text-zinc-600">
+            {description}
+          </p>
         ) : null}
       </div>
       {action ? (

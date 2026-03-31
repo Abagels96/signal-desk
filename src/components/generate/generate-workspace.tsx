@@ -131,15 +131,15 @@ export function GenerateWorkspace({
   const tpl = MOCK_TEMPLATES.find((t) => t.id === templateId);
 
   return (
-    <div className="flex flex-col gap-10 lg:gap-12">
+    <div className="flex min-w-0 flex-col gap-10 lg:gap-12">
       <header className="max-w-3xl">
-        <p className="text-[11px] font-medium uppercase tracking-[0.28em] text-zinc-500">
+        <p className="text-[11px] font-medium uppercase tracking-[0.28em] text-zinc-500 light:text-zinc-600">
           Generate
         </p>
-        <h1 className="mt-3 font-[family-name:var(--font-display)] text-3xl font-normal tracking-tight text-zinc-50 sm:text-4xl">
+        <h1 className="mt-3 font-[family-name:var(--font-display)] text-3xl font-normal tracking-tight text-zinc-50 light:text-zinc-900 sm:text-4xl">
           Composition pass
         </h1>
-        <p className="mt-3 text-sm leading-relaxed text-zinc-500">
+        <p className="mt-3 text-sm leading-relaxed text-zinc-500 light:text-zinc-600">
           A control-room surface — not a chat thread. Tune lane, tone, and
           length, then review the mock output and refine in place.
         </p>
@@ -152,19 +152,20 @@ export function GenerateWorkspace({
             className={cn(
               "relative overflow-hidden rounded-[1.75rem] border border-white/[0.09] bg-[linear-gradient(165deg,rgba(26,30,42,0.96)_0%,rgba(10,12,18,0.98)_50%,rgba(6,7,11,1)_100%)] p-1",
               "shadow-[0_0_0_1px_rgba(110,200,255,0.05),0_32px_100px_-48px_rgba(0,0,0,0.9)]",
+              "light:border-zinc-200/80 light:bg-[linear-gradient(165deg,rgba(255,255,255,0.98)_0%,rgba(250,250,250,0.99)_50%,rgba(244,244,245,1)_100%)] light:shadow-[0_0_0_1px_rgba(56,189,248,0.12),0_24px_80px_-40px_rgba(0,0,0,0.08)]",
             )}
           >
             <div
               className="pointer-events-none absolute -left-1/4 top-0 h-px w-[150%] bg-[linear-gradient(90deg,transparent,rgba(110,200,255,0.45),rgba(167,139,250,0.35),transparent)] opacity-75"
               aria-hidden
             />
-            <div className="rounded-[1.6rem] border border-white/[0.05] bg-[#090a0f]/50 p-5 sm:p-7">
+            <div className="rounded-[1.6rem] border border-white/[0.05] bg-[#090a0f]/50 p-5 sm:p-7 light:border-zinc-200/70 light:bg-white/70">
               <Textarea
                 label="Brief / prompt"
                 value={prompt}
                 onChange={(e) => setPrompt(e.target.value)}
                 rows={10}
-                className="min-h-[14rem] rounded-3xl border-white/[0.07] bg-[#0a0b10]/90 text-[15px] leading-relaxed sm:min-h-[16rem]"
+                className="min-h-[14rem] rounded-3xl border-white/[0.07] bg-[#0a0b10]/90 text-[15px] leading-relaxed sm:min-h-[16rem] light:border-zinc-200/80 light:bg-[var(--sd-input-bg)]"
                 placeholder="What are you trying to ship in this pass? Constraints beat vibes."
               />
 
@@ -211,14 +212,14 @@ export function GenerateWorkspace({
                 </Select>
               </div>
 
-              <div className="mt-8 flex flex-wrap items-center gap-3 border-t border-white/[0.06] pt-6">
+              <div className="mt-8 flex flex-col gap-3 border-t border-white/[0.06] pt-6 min-[480px]:flex-row min-[480px]:flex-wrap min-[480px]:items-center light:border-zinc-200/80">
                 <Button
                   type="button"
                   variant="primary"
                   size="lg"
                   disabled={busy || !prompt.trim()}
                   onClick={() => void runGenerate()}
-                  className="min-w-[11rem]"
+                  className="w-full min-[480px]:w-auto min-[480px]:min-w-[11rem]"
                 >
                   {busy ? (
                     <>
@@ -229,7 +230,7 @@ export function GenerateWorkspace({
                     "Run composition pass"
                   )}
                 </Button>
-                <p className="max-w-sm text-xs leading-relaxed text-zinc-600">
+                <p className="max-w-sm text-xs leading-relaxed text-zinc-600 min-[480px]:flex-1">
                   Mock engine only — deterministic seeds + local refinements. No
                   network.
                 </p>
@@ -244,18 +245,19 @@ export function GenerateWorkspace({
             className={cn(
               "relative flex min-h-[22rem] flex-col rounded-3xl border border-white/[0.08] bg-[linear-gradient(165deg,rgba(14,16,24,0.95)_0%,rgba(8,9,14,0.98)_100%)]",
               "shadow-[0_24px_80px_-40px_rgba(0,0,0,0.88),inset_0_1px_0_rgba(255,255,255,0.04)]",
+              "light:border-zinc-200/80 light:bg-[linear-gradient(165deg,rgba(255,255,255,0.97)_0%,rgba(244,244,245,0.99)_100%)] light:shadow-[0_20px_70px_-36px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(0,0,0,0.04)]",
             )}
           >
             <div
               className="pointer-events-none absolute inset-x-6 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(110,200,255,0.35),transparent)]"
               aria-hidden
             />
-            <div className="flex flex-wrap items-start justify-between gap-3 border-b border-white/[0.06] px-5 py-4 sm:px-6">
+            <div className="flex flex-wrap items-start justify-between gap-3 border-b border-white/[0.06] px-5 py-4 sm:px-6 light:border-zinc-200/80">
               <div>
-                <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-zinc-600">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-zinc-600 light:text-zinc-500">
                   Signal output
                 </p>
-                <p className="mt-1 font-[family-name:var(--font-display)] text-lg font-semibold tracking-tight text-zinc-100">
+                <p className="mt-1 font-[family-name:var(--font-display)] text-lg font-semibold tracking-tight text-zinc-100 light:text-zinc-900">
                   {outputTitle || "Awaiting pass"}
                 </p>
               </div>
@@ -264,7 +266,7 @@ export function GenerateWorkspace({
                   <Badge variant="lane">{tpl.lane}</Badge>
                 ) : null}
                 {passAt ? (
-                  <span className="text-[11px] tabular-nums text-zinc-500">
+                  <span className="text-[11px] tabular-nums text-zinc-500 light:text-zinc-600">
                     {new Date(passAt).toLocaleTimeString(undefined, {
                       hour: "2-digit",
                       minute: "2-digit",
@@ -279,15 +281,15 @@ export function GenerateWorkspace({
 
             <div className="flex-1 overflow-auto px-5 py-5 sm:px-6">
               {outputBody ? (
-                <pre className="whitespace-pre-wrap font-mono text-[13px] leading-relaxed text-zinc-300 [word-break:break-word]">
+                <pre className="whitespace-pre-wrap font-mono text-[13px] leading-relaxed text-zinc-300 [word-break:break-word] light:text-zinc-800">
                   {outputBody}
                 </pre>
               ) : (
-                <div className="flex min-h-[12rem] flex-col justify-center gap-2 rounded-2xl border border-dashed border-white/[0.08] bg-black/20 px-4 py-8 text-center">
-                  <p className="text-sm font-medium text-zinc-500">
+                <div className="flex min-h-[12rem] flex-col justify-center gap-2 rounded-2xl border border-dashed border-white/[0.08] bg-black/20 px-4 py-8 text-center light:border-zinc-300/70 light:bg-zinc-100/60">
+                  <p className="text-sm font-medium text-zinc-500 light:text-zinc-600">
                     Output canvas
                   </p>
-                  <p className="text-xs text-zinc-600">
+                  <p className="text-xs text-zinc-600 light:text-zinc-600">
                     Run a pass to render mock copy here — flat surface, not a chat
                     bubble.
                   </p>
@@ -296,14 +298,14 @@ export function GenerateWorkspace({
             </div>
 
             {passId ? (
-              <p className="border-t border-white/[0.05] px-5 py-2 font-mono text-[10px] text-zinc-600 sm:px-6">
+              <p className="border-t border-white/[0.05] px-5 py-2 font-mono text-[10px] text-zinc-600 sm:px-6 light:border-zinc-200/80 light:text-zinc-500">
                 Pass id · {passId}
               </p>
             ) : null}
           </div>
 
           <div>
-            <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-zinc-600">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-zinc-600 light:text-zinc-500">
               Refine
             </p>
             <div className="mt-3 flex flex-wrap gap-2">
@@ -333,7 +335,9 @@ export function GenerateWorkspace({
               Save to drafts
             </Button>
             {saveHint ? (
-              <span className="text-sm text-emerald-400/90">{saveHint}</span>
+              <span className="text-sm text-emerald-400/90 light:text-emerald-700">
+                {saveHint}
+              </span>
             ) : null}
           </div>
         </div>

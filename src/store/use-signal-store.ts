@@ -47,7 +47,7 @@ export type UpdateDraftInput = Partial<
   body?: string;
 };
 
-export type AppearanceMode = "dark" | "system";
+export type AppearanceMode = "dark" | "light" | "system";
 
 type SignalStoreState = {
   drafts: Draft[];
@@ -55,7 +55,7 @@ type SignalStoreState = {
   selectedTemplateId: string | null;
   /** Pinned template shortcuts on the dashboard (max 6) */
   favoriteTemplateIds: string[];
-  /** UI mock — Signal Desk canvas is dark; system is a preview flag only */
+  /** Canvas theme: dark, light, or follow OS (system). */
   appearance: AppearanceMode;
 };
 
@@ -189,7 +189,9 @@ export const useSignalStore = create<SignalStore>()(
             ? p.favoriteTemplateIds
             : current.favoriteTemplateIds,
           appearance:
-            p.appearance === "dark" || p.appearance === "system"
+            p.appearance === "dark" ||
+            p.appearance === "light" ||
+            p.appearance === "system"
               ? p.appearance
               : current.appearance,
         };

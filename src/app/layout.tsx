@@ -41,6 +41,9 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   themeColor: "#07080c",
   colorScheme: "dark",
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
 };
 
 export default function RootLayout({
@@ -54,7 +57,7 @@ export default function RootLayout({
       data-signal-appearance="dark"
       className={`${geistSans.variable} ${geistMono.variable} ${fontDisplay.variable} h-full antialiased`}
     >
-      <body className="flex min-h-dvh flex-col text-zinc-200">
+      <body className="flex min-h-dvh flex-col overflow-x-hidden bg-background text-foreground transition-colors duration-200">
         <DeskShell>{children}</DeskShell>
       </body>
     </html>

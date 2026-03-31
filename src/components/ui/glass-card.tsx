@@ -24,26 +24,28 @@ export function GlassCard({
       className={cn(
         "relative overflow-hidden rounded-3xl border border-white/[0.07] bg-[linear-gradient(145deg,rgba(22,26,36,0.88)_0%,rgba(12,14,22,0.94)_55%,rgba(10,11,18,0.97)_100%)]",
         "shadow-[0_24px_80px_-32px_rgba(0,0,0,0.88),0_0_0_1px_rgba(255,255,255,0.03),inset_0_1px_0_rgba(255,255,255,0.05)] backdrop-blur-xl",
+        "light:border-zinc-200/90 light:bg-[linear-gradient(145deg,rgba(255,255,255,0.95)_0%,rgba(250,250,250,0.98)_55%,rgba(244,244,245,1)_100%)]",
+        "light:shadow-[0_20px_60px_-28px_rgba(0,0,0,0.1),0_0_0_1px_rgba(24,24,27,0.06),inset_0_1px_0_rgba(255,255,255,0.9)]",
         className,
       )}
       {...props}
     >
       {accent ? (
         <div
-          className="pointer-events-none absolute left-[12%] right-[12%] top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(110,200,255,0.45),rgba(167,139,250,0.4),transparent)] opacity-90 shadow-[0_0_20px_rgba(110,200,255,0.15)]"
+          className="pointer-events-none absolute left-[12%] right-[12%] top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(110,200,255,0.45),rgba(167,139,250,0.4),transparent)] opacity-90 shadow-[0_0_20px_rgba(110,200,255,0.15)] light:opacity-80"
           aria-hidden
         />
       ) : null}
       {(eyebrow || title || headerExtra) && (
-        <div className="flex flex-wrap items-start justify-between gap-4 border-b border-white/[0.05] px-6 pb-4 pt-6 sm:px-7">
+        <div className="flex flex-wrap items-start justify-between gap-4 border-b border-white/[0.05] px-6 pb-4 pt-6 sm:px-7 light:border-zinc-200/80">
           <div className="min-w-0">
             {eyebrow ? (
-              <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-zinc-500">
+              <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-zinc-500 light:text-zinc-600">
                 {eyebrow}
               </p>
             ) : null}
             {title ? (
-              <h3 className="mt-1.5 font-[family-name:var(--font-display)] text-lg font-semibold tracking-tight text-zinc-100">
+              <h3 className="mt-1.5 font-[family-name:var(--font-display)] text-lg font-semibold tracking-tight text-zinc-100 light:text-zinc-900">
                 {title}
               </h3>
             ) : null}

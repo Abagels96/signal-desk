@@ -104,15 +104,16 @@ export function DraftsWorkspace() {
   return (
     <div className="flex flex-col gap-8 lg:gap-10">
       <header className="max-w-2xl">
-        <p className="text-[11px] font-medium uppercase tracking-[0.28em] text-zinc-500">
+        <p className="text-[11px] font-medium uppercase tracking-[0.28em] text-zinc-500 light:text-zinc-600">
           Drafts
         </p>
-        <h1 className="mt-3 font-[family-name:var(--font-display)] text-3xl font-normal tracking-tight text-zinc-50 sm:text-4xl">
+        <h1 className="mt-3 font-[family-name:var(--font-display)] text-3xl font-normal tracking-tight text-zinc-50 light:text-zinc-900 sm:text-4xl">
           Local shelf
         </h1>
-        <p className="mt-3 text-sm leading-relaxed text-zinc-500">
+        <p className="mt-3 text-sm leading-relaxed text-zinc-500 light:text-zinc-600">
           Drafts live in your browser via the Signal Desk store (persisted to{" "}
-          <span className="text-zinc-400">localStorage</span>) — no server.
+          <span className="text-zinc-400 light:text-zinc-600">localStorage</span>)
+          — no server.
         </p>
       </header>
 
@@ -120,7 +121,7 @@ export function DraftsWorkspace() {
         <div className="flex flex-col gap-5 lg:col-span-5 xl:col-span-4">
           <div className="relative">
             <Search
-              className="pointer-events-none absolute left-4 top-1/2 size-4 -translate-y-1/2 text-zinc-600"
+              className="pointer-events-none absolute left-4 top-1/2 size-4 -translate-y-1/2 text-zinc-600 light:text-zinc-500"
               aria-hidden
             />
             <input
@@ -128,14 +129,14 @@ export function DraftsWorkspace() {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search titles and body…"
-              className="w-full rounded-3xl border border-white/[0.08] bg-[#0c0d12]/90 py-3 pl-11 pr-4 text-sm text-zinc-100 placeholder:text-zinc-600 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] focus:border-cyan-400/35 focus:outline-none focus:ring-2 focus:ring-cyan-400/15"
+              className="w-full rounded-3xl border border-white/[0.08] bg-[var(--sd-input-bg)] py-3 pl-11 pr-4 text-sm text-foreground placeholder:text-zinc-500 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] focus:border-cyan-400/35 focus:outline-none focus:ring-2 focus:ring-cyan-400/15 light:border-zinc-200/90 light:placeholder:text-zinc-500 light:shadow-[inset_0_1px_0_rgba(0,0,0,0.04)] light:focus:border-cyan-500/40 light:focus:ring-cyan-500/20"
               aria-label="Search drafts"
             />
           </div>
 
           <ul className="flex flex-col gap-3">
             {sorted.length === 0 ? (
-              <li className="rounded-3xl border border-dashed border-white/[0.1] bg-white/[0.02] px-5 py-10 text-center text-sm text-zinc-500">
+              <li className="rounded-3xl border border-dashed border-white/[0.1] bg-white/[0.02] px-5 py-10 text-center text-sm text-zinc-500 light:border-zinc-300/70 light:bg-zinc-50/80 light:text-zinc-600">
                 {drafts.length === 0
                   ? "No drafts yet — save from Generate."
                   : "No drafts match your search."}
@@ -160,6 +161,7 @@ export function DraftsWorkspace() {
           <div
             className={cn(
               "relative min-h-[28rem] rounded-3xl border border-white/[0.08] bg-[linear-gradient(155deg,rgba(18,22,32,0.92)_0%,rgba(10,12,18,0.97)_100%)] shadow-[0_28px_90px_-40px_rgba(0,0,0,0.88),inset_0_1px_0_rgba(255,255,255,0.05)]",
+              "light:border-zinc-200/80 light:bg-[linear-gradient(155deg,rgba(255,255,255,0.96)_0%,rgba(250,250,250,0.99)_100%)] light:shadow-[0_20px_70px_-36px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(0,0,0,0.04)]",
             )}
           >
             <div
@@ -168,32 +170,32 @@ export function DraftsWorkspace() {
             />
             {!selected ? (
               <div className="flex min-h-[28rem] flex-col items-center justify-center gap-3 px-6 py-16 text-center">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-zinc-600">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-zinc-600 light:text-zinc-500">
                   Editor
                 </p>
-                <p className="max-w-sm font-[family-name:var(--font-display)] text-xl text-zinc-300">
+                <p className="max-w-sm font-[family-name:var(--font-display)] text-xl text-zinc-300 light:text-zinc-800">
                   Select a draft to edit
                 </p>
-                <p className="max-w-xs text-sm text-zinc-600">
+                <p className="max-w-xs text-sm text-zinc-600 light:text-zinc-600">
                   Title and body save as you type — stored only on this device.
                 </p>
               </div>
             ) : (
               <div className="flex flex-col">
-                <div className="flex flex-wrap items-start justify-between gap-4 border-b border-white/[0.06] px-5 py-4 sm:px-7">
+                <div className="flex flex-col gap-3 border-b border-white/[0.06] px-4 py-4 sm:flex-row sm:flex-wrap sm:items-start sm:justify-between sm:gap-4 sm:px-7 light:border-zinc-200/80">
                   <div className="min-w-0 flex-1">
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-zinc-600">
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-zinc-600 light:text-zinc-500">
                       Draft editor
                     </p>
-                    <p className="mt-1 font-mono text-[11px] text-zinc-600">
+                    <p className="mt-1 break-all font-mono text-[10px] text-zinc-600 sm:text-[11px] light:text-zinc-500">
                       {selected.id}
                     </p>
                   </div>
-                  <div className="flex flex-wrap items-center gap-2">
+                  <div className="flex flex-wrap items-center gap-2 sm:justify-end">
                     <Badge variant={statusVariant(selected.status)}>
                       {selected.status}
                     </Badge>
-                    <span className="text-xs tabular-nums text-zinc-500">
+                    <span className="text-xs tabular-nums text-zinc-500 light:text-zinc-600">
                       {selected.wordCount} words ·{" "}
                       {formatIsoDate(selected.updatedAt, "short")}
                     </span>
@@ -221,7 +223,7 @@ export function DraftsWorkspace() {
                   <div className="grid gap-2 sm:max-w-xs">
                     <label
                       htmlFor="draft-status"
-                      className="text-[11px] font-medium uppercase tracking-[0.2em] text-zinc-500"
+                      className="text-[11px] font-medium uppercase tracking-[0.2em] text-zinc-500 light:text-zinc-600"
                     >
                       Status
                     </label>
@@ -234,7 +236,7 @@ export function DraftsWorkspace() {
                           e.target.value as DraftStatus,
                         )
                       }
-                      className="w-full rounded-3xl border border-white/[0.08] bg-[#0c0d12]/90 py-3 pl-4 pr-10 text-sm text-zinc-100 focus:border-cyan-400/35 focus:outline-none focus:ring-2 focus:ring-cyan-400/15"
+                      className="w-full rounded-3xl border border-white/[0.08] bg-[var(--sd-input-bg)] py-3 pl-4 pr-10 text-sm text-foreground focus:border-cyan-400/35 focus:outline-none focus:ring-2 focus:ring-cyan-400/15 light:border-zinc-200/90 light:focus:border-cyan-500/40 light:focus:ring-cyan-500/20"
                     >
                       {STATUS_OPTIONS.map((o) => (
                         <option key={o.value} value={o.value}>
@@ -252,7 +254,7 @@ export function DraftsWorkspace() {
                     rows={16}
                     className="min-h-[18rem] font-mono text-[13px] leading-relaxed"
                   />
-                  <div className="flex flex-wrap gap-2 border-t border-white/[0.06] pt-5">
+                  <div className="flex flex-wrap gap-2 border-t border-white/[0.06] pt-5 light:border-zinc-200/80">
                     <Button
                       type="button"
                       variant="secondary"
@@ -313,10 +315,10 @@ function DraftCard({
   return (
     <article
       className={cn(
-        "group relative overflow-hidden rounded-3xl border bg-[linear-gradient(150deg,rgba(20,24,34,0.95)_0%,rgba(12,14,22,0.98)_100%)] transition",
+        "group relative overflow-hidden rounded-3xl border bg-[linear-gradient(150deg,rgba(20,24,34,0.95)_0%,rgba(12,14,22,0.98)_100%)] transition light:bg-[linear-gradient(150deg,rgba(255,255,255,0.98)_0%,rgba(244,244,245,0.99)_100%)]",
         active
-          ? "border-cyan-400/35 shadow-[0_0_32px_rgba(56,200,255,0.12)]"
-          : "border-white/[0.07] hover:border-white/[0.11]",
+          ? "border-cyan-400/35 shadow-[0_0_32px_rgba(56,200,255,0.12)] light:border-cyan-500/35 light:shadow-[0_0_24px_rgba(56,189,248,0.2)]"
+          : "border-white/[0.07] hover:border-white/[0.11] light:border-zinc-200/80 light:hover:border-zinc-300",
       )}
     >
       <div
@@ -333,7 +335,7 @@ function DraftCard({
             onOpen();
           }
         }}
-        className="flex w-full cursor-pointer flex-col gap-3 p-5 text-left outline-none ring-cyan-400/0 transition hover:bg-white/[0.02] focus-visible:ring-2 focus-visible:ring-cyan-400/30 sm:p-6"
+        className="flex w-full cursor-pointer flex-col gap-3 p-5 text-left outline-none ring-cyan-400/0 transition hover:bg-white/[0.02] focus-visible:ring-2 focus-visible:ring-cyan-400/30 sm:p-6 light:hover:bg-zinc-900/[0.06] light:focus-visible:ring-cyan-500/30"
       >
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0">
@@ -341,35 +343,35 @@ function DraftCard({
               {d.pinned ? (
                 <Pin className="size-3.5 shrink-0 text-amber-400/90" aria-hidden />
               ) : null}
-              <h2 className="font-[family-name:var(--font-display)] text-lg font-semibold leading-snug tracking-tight text-zinc-100">
+              <h2 className="font-[family-name:var(--font-display)] text-lg font-semibold leading-snug tracking-tight text-zinc-100 light:text-zinc-900">
                 {d.title}
               </h2>
             </div>
-            <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-zinc-500">
+            <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-zinc-500 light:text-zinc-600">
               {preview || "Empty body"}
             </p>
           </div>
         </div>
-        <div className="flex flex-wrap items-center justify-between gap-2 border-t border-white/[0.05] pt-4">
+        <div className="flex flex-wrap items-center justify-between gap-2 border-t border-white/[0.05] pt-4 light:border-zinc-200/70">
           <div className="flex flex-wrap items-center gap-2">
             <Badge variant={statusVariant(d.status)}>{d.status}</Badge>
-            <span className="text-[11px] tabular-nums text-zinc-600">
+            <span className="text-[11px] tabular-nums text-zinc-600 light:text-zinc-500">
               {d.wordCount} w · {formatIsoDate(d.updatedAt, "short")}
             </span>
           </div>
-          <span className="text-[11px] font-medium uppercase tracking-wider text-cyan-400/80 opacity-0 transition group-hover:opacity-100">
+          <span className="text-[11px] font-medium uppercase tracking-wider text-cyan-400/80 opacity-0 transition group-hover:opacity-100 light:text-cyan-700">
             Open
           </span>
         </div>
       </div>
-      <div className="flex items-center justify-end gap-1 border-t border-white/[0.05] px-3 py-2">
+      <div className="flex items-center justify-end gap-1 border-t border-white/[0.05] px-3 py-2 light:border-zinc-200/70">
         <button
           type="button"
           onClick={(e) => {
             e.stopPropagation();
             onPin();
           }}
-          className="rounded-xl p-2 text-zinc-500 transition hover:bg-white/[0.06] hover:text-zinc-200"
+          className="rounded-xl p-2 text-zinc-500 transition hover:bg-white/[0.06] hover:text-zinc-200 light:text-zinc-600 light:hover:bg-zinc-900/[0.06] light:hover:text-zinc-900"
           aria-label={d.pinned ? "Unpin draft" : "Pin draft"}
         >
           {d.pinned ? (
@@ -384,7 +386,7 @@ function DraftCard({
             e.stopPropagation();
             onDelete();
           }}
-          className="rounded-xl p-2 text-zinc-500 transition hover:bg-rose-950/40 hover:text-rose-300"
+          className="rounded-xl p-2 text-zinc-500 transition hover:bg-rose-950/40 hover:text-rose-300 light:text-zinc-600 light:hover:bg-rose-100 light:hover:text-rose-700"
           aria-label="Delete draft"
         >
           <Trash2 className="size-4" />
