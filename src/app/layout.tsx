@@ -26,6 +26,23 @@ export const metadata: Metadata = {
   },
   description:
     "A local-first editorial control room for AI-assisted content — mock data and localStorage only.",
+  icons: {
+    icon: [
+      {
+        url: "/signal-desk-mark.png",
+        type: "image/png",
+        sizes: "32x32",
+      },
+      { url: "/signal-desk-mark.png", type: "image/png", sizes: "any" },
+    ],
+    apple: [
+      {
+        url: "/signal-desk-mark.png",
+        type: "image/png",
+        sizes: "180x180",
+      },
+    ],
+  },
 };
 
 export const viewport: Viewport = {
