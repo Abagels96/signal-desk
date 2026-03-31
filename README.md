@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Signal Desk
 
-## Getting Started
+A **local-first** editorial control room for AI-assisted content. Drafts, sessions, template favorites, and preferences stay in your browser — **no backend** in this build (mock data + `localStorage` via Zustand).
 
-First, run the development server:
+## Stack
+
+- **Next.js** 16 (App Router), **React** 19  
+- **Tailwind CSS** 4  
+- **Zustand** + `persist` for the Signal store  
+- Fonts: Geist, Geist Mono, DM Serif Display  
+
+## Features
+
+- **Dashboard**, **Generate**, **Drafts**, **Templates** (gallery + detail), **Insights**, **Productivity**, **Settings**
+- **Appearance**: **Light**, **Dark**, or **System** (follows OS `prefers-color-scheme`). Toggle from the **site header** or **Settings → Appearance**. Theme is applied on `<html data-signal-appearance="light|dark">` (system is resolved to light or dark).
+- Glass-style UI, command chips, and editorial layouts tuned for both themes
+
+## Scripts
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run dev       # dev server (webpack)
+npm run dev:turbo # optional: Next dev with Turbopack
+npm run build     # production build
+npm run start     # run production server
+npm run lint      # ESLint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) after `npm run dev`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Data & storage
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Persisted under a single store key (see `STORAGE_KEYS` in `src/lib/storage.ts`)
+- **Settings → Reset demo data** restores bundled seed drafts/sessions; **appearance** is kept
 
-## Learn More
+## Deploy
 
-To learn more about Next.js, take a look at the following resources:
+Any static-friendly host that supports Next.js works (e.g. [Vercel](https://vercel.com), Node adapter for other platforms). Configure `basePath` / asset URLs if the app is not served from the site root (`src/lib/base-path.ts`).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app). See [Next.js documentation](https://nextjs.org/docs) for framework details.
