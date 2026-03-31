@@ -1,6 +1,7 @@
 "use client";
 
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useState } from "react";
@@ -37,14 +38,24 @@ export function SiteHeader() {
       <div className="relative mx-auto flex h-[3.75rem] max-w-[1600px] items-center gap-4 px-4 sm:h-16 sm:px-6 lg:px-10">
         <Link
           href="/"
-          className="group flex shrink-0 flex-col leading-none outline-none transition duration-200 ease-out focus-visible:ring-2 focus-visible:ring-cyan-400/35 focus-visible:ring-offset-2 focus-visible:ring-offset-[#07080c] rounded-xl -m-1 p-1"
+          className="group flex shrink-0 items-center gap-3 outline-none transition duration-200 ease-out focus-visible:ring-2 focus-visible:ring-cyan-400/35 focus-visible:ring-offset-2 focus-visible:ring-offset-[#07080c] rounded-xl -m-1 p-1"
           onClick={() => setOpen(false)}
         >
-          <span className="text-[10px] font-semibold uppercase tracking-[0.35em] text-zinc-500 transition duration-200 group-hover:text-zinc-400">
-            Signal Desk
-          </span>
-          <span className="mt-0.5 font-[family-name:var(--font-display)] text-base font-semibold tracking-tight text-zinc-100 transition duration-200 group-hover:text-white sm:text-lg">
-            Creative control room
+          <Image
+            src="/signal-desk-mark.png"
+            alt="Signal Desk"
+            width={40}
+            height={40}
+            priority
+            className="size-9 shrink-0 rounded-xl object-cover ring-1 ring-white/[0.1] shadow-[0_0_28px_rgba(110,200,255,0.14)] transition duration-200 group-hover:ring-cyan-400/30 group-hover:shadow-[0_0_36px_rgba(110,200,255,0.22)] sm:size-10"
+          />
+          <span className="flex flex-col leading-none">
+            <span className="text-[10px] font-semibold uppercase tracking-[0.35em] text-zinc-500 transition duration-200 group-hover:text-zinc-400">
+              Signal Desk
+            </span>
+            <span className="mt-0.5 font-[family-name:var(--font-display)] text-base font-semibold tracking-tight text-zinc-100 transition duration-200 group-hover:text-white sm:text-lg">
+              Creative control room
+            </span>
           </span>
         </Link>
 

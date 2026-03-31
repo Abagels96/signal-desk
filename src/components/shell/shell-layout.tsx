@@ -1,3 +1,4 @@
+import { AppearanceSync } from "@/components/shell/appearance-sync";
 import { SiteHeader } from "@/components/shell/site-header";
 import { cn } from "@/lib/cn";
 
@@ -22,6 +23,7 @@ export function ShellLayout({ children, variant = "default" }: ShellLayoutProps)
       <div className="pointer-events-none fixed inset-0 z-0 bg-[radial-gradient(ellipse_130%_85%_at_50%_-22%,rgba(110,200,255,0.045),transparent_52%)]" />
       <div className="sd-grain" aria-hidden />
 
+      <AppearanceSync />
       <SiteHeader />
 
       <div

@@ -1,7 +1,7 @@
 "use client";
 
 import { Download, Moon, RotateCcw, Sun } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui";
 import { STORAGE_KEYS } from "@/lib/storage";
 import { cn } from "@/lib/cn";
@@ -14,10 +14,6 @@ export function SettingsWorkspace() {
   const drafts = useSignalStore((s) => s.drafts);
 
   const [resetHint, setResetHint] = useState<string | null>(null);
-
-  useEffect(() => {
-    document.documentElement.setAttribute("data-signal-appearance", appearance);
-  }, [appearance]);
 
   const handleReset = () => {
     if (

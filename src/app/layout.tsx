@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { DM_Serif_Display, Geist, Geist_Mono } from "next/font/google";
 import { DeskShell } from "@/components/shell/desk-shell";
 import "./globals.css";
@@ -28,6 +28,11 @@ export const metadata: Metadata = {
     "A local-first editorial control room for AI-assisted content — mock data and localStorage only.",
 };
 
+export const viewport: Viewport = {
+  themeColor: "#07080c",
+  colorScheme: "dark",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -36,6 +41,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-signal-appearance="dark"
       className={`${geistSans.variable} ${geistMono.variable} ${fontDisplay.variable} h-full antialiased`}
     >
       <body className="flex min-h-dvh flex-col text-zinc-200">
