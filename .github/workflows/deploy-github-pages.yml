@@ -1,4 +1,9 @@
-# Build static site and deploy to GitHub Pages at https://<user>.github.io/signal-desk/
+# Build static site and deploy to https://<user>.github.io/signal-desk/
+#
+# REQUIRED once per repo (or deploy fails with 404 "Failed to create deployment"):
+# Settings → Pages → Build and deployment → Source: GitHub Actions (not "Deploy from a branch").
+# https://github.com/Abagels96/signal-desk/settings/pages
+#
 name: Deploy to GitHub Pages
 
 on:
