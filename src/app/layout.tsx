@@ -1,7 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import { DM_Serif_Display, Geist, Geist_Mono } from "next/font/google";
 import { DeskShell } from "@/components/shell/desk-shell";
+import { publicAsset } from "@/lib/base-path";
 import "./globals.css";
+
+const markIcon = publicAsset("/signal-desk-mark.png");
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,20 +31,10 @@ export const metadata: Metadata = {
     "A local-first editorial control room for AI-assisted content — mock data and localStorage only.",
   icons: {
     icon: [
-      {
-        url: "/signal-desk-mark.png",
-        type: "image/png",
-        sizes: "32x32",
-      },
-      { url: "/signal-desk-mark.png", type: "image/png", sizes: "any" },
+      { url: markIcon, type: "image/png", sizes: "32x32" },
+      { url: markIcon, type: "image/png", sizes: "any" },
     ],
-    apple: [
-      {
-        url: "/signal-desk-mark.png",
-        type: "image/png",
-        sizes: "180x180",
-      },
-    ],
+    apple: [{ url: markIcon, type: "image/png", sizes: "180x180" }],
   },
 };
 

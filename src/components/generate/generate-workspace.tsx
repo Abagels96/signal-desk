@@ -50,7 +50,7 @@ const DEFAULT_PROMPT =
   "Outline the narrative for a product launch: audience tension, proof, and the one CTA we cannot dilute.";
 
 export type GenerateWorkspaceProps = {
-  /** Hydrated from `/generate?template=` via the server page (keyed remount on change). */
+  /** From `?template=` on the Generate route (client URL; static export). */
   initialTemplateSlug?: string;
 };
 

@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useState } from "react";
+import { publicAsset } from "@/lib/base-path";
 import { APP_ROUTES } from "@/lib/routes";
 import { cn } from "@/lib/cn";
 
@@ -42,7 +43,7 @@ export function SiteHeader() {
           onClick={() => setOpen(false)}
         >
           <Image
-            src="/signal-desk-mark.png"
+            src={publicAsset("/signal-desk-mark.png")}
             alt="Signal Desk"
             width={40}
             height={40}

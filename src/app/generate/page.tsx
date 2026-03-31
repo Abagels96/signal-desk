@@ -1,30 +1,23 @@
 import type { Metadata } from "next";
-import { GenerateWorkspace } from "@/components/generate/generate-workspace";
+import { Suspense } from "react";
+import { GenerateClient } from "./generate-client";
 
 export const metadata: Metadata = {
   title: "Generate",
 };
 
-function normalizeTemplateParam(
-  raw: string | string[] | undefined,
-): string | undefined {
-  if (typeof raw === "string") return raw;
-  if (Array.isArray(raw) && raw[0]) return raw[0];
-  return undefined;
+function GenerateFallback() {
+  return (
+    <div className="flex min-h-[40vh] items-center justify-center text-sm text-zinc-500">
+      Loading workspace…
+    </div>
+  );
 }
 
-export default async function GeneratePage({
-  searchParams,
-}: {
-  searchParams: Promise<{ template?: string | string[] }>;
-}) {
-  const sp = await searchParams;
-  const templateSlug = normalizeTemplateParam(sp.template);
-
+export default function GeneratePage() {
   return (
-    <GenerateWorkspace
-      key={templateSlug ?? "__default__"}
-      initialTemplateSlug={templateSlug}
-    />
+    <Suspense fallback={<GenerateFallback />}>
+      <GenerateClient />
+    </Suspense>
   );
 }
